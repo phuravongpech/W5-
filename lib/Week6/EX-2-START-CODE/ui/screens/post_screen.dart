@@ -17,23 +17,23 @@ class PostScreen extends StatelessWidget {
       appBar: AppBar(
         actions: [
           IconButton(
-            // 2- Fetch the post
-            onPressed: () => {postProvider.fetchPost(45)},
+            // 2- Fetch the posts
+            onPressed: () => {postProvider.fetchPosts()},
             icon: const Icon(Icons.update),
           ),
         ],
       ),
 
-      // 3 -  Display the post
+      // 3 -  Display the posts
       body: Center(child: _buildBody(postProvider)),
     );
   }
 
-  Widget _buildBody(PostProvider courseProvider) {
-    final postValue = courseProvider.postValue;
+  Widget _buildBody(PostProvider postProvider) {
+    final postValue = postProvider.postsValue;
 
     if (postValue == null) {
-      return Text('Tap refresh to display post'); // display an empty state
+      return Text('Tap refresh to display posts'); // display an empty state
     }
 
     switch (postValue.state) {
@@ -41,10 +41,15 @@ class PostScreen extends StatelessWidget {
         return CircularProgressIndicator(); // display a progress
 
       case AsyncValueState.error:
-        return Text('Error: ${postValue.error}'); // display a error
+        return Text('Error: ${postValue.error}'); // display an error
 
       case AsyncValueState.success:
-        return PostCard(post: postValue.data!); // display the post
+        return ListView.builder(
+          itemCount: postValue.data!.length,
+          itemBuilder: (context, index) {
+            return PostCard(post: postValue.data![index]);
+          },
+        ); // display the posts
     }
   }
 }
