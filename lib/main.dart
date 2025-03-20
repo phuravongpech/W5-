@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:week5/EXERCISE-2/color_tap_screen.dart';
-import 'package:week5/EXERCISE-2/stat_screen.dart';
-import 'package:week5/model/color_counter.dart';
+import 'package:week5/Week5/EXERCISE-2/color_tap_screen.dart';
+import 'package:week5/Week5/EXERCISE-2/stat_screen.dart';
+import 'package:week5/Week5/model/color_counter.dart';
 
 void main() {
   runApp(

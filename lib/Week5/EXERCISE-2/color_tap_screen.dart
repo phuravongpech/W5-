@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:week5/model/color_counter.dart';
+import 'package:week5/Week5/model/color_counter.dart';
 
 enum CardType { red, blue }
 
